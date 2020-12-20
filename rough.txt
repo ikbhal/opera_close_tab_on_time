@@ -1,0 +1,19 @@
+Bismillah
+
+Q) close tab in opera
+A)
+chrome.tabs.query({
+	currentWindow: true,
+	active: true
+// Get the current tab
+}, function(tab){
+	// Remove the tab
+	chrome.tabs.remove(tab[0].id);
+});
+
+Q) keyboard shortcut in opera
+A)
+
+
+Q) timer in opera 
+A)
