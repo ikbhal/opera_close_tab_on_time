@@ -20,12 +20,22 @@ chrome.commands.onCommand.addListener(function(commandName) {
 	  
 	  alert("starting alarm " + command.closeInMinutes + " in minutes");
 	  var closeInMilliSeconds = command.closeInMinutes * 60 * 1000;
-
+	  //closeInMilliSeconds = 3000;//testing
 	  setTimeout(closeTabHandler, closeInMilliSeconds);
 
+	  var tabId = null;
+	  chrome.tabs.query({
+		currentWindow: true,
+		active: true
+	  	// Get the current tab
+	  }, function(tab){
+		// Remove the tab set
+		tabId = tab[0].id;
+	  });
 	  function closeTabHandler() {
-			alert('closing current tab');
-			chrome.tabs.remove(tab[0].id);
+		// check if tab exist before showing alter
+		alert('closing  tab');
+		chrome.tabs.remove(tabId);
 	  }
 
 });
